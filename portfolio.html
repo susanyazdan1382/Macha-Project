@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css">
+    <!-- aos library -->
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <title>Document</title>
+ 
+ <style>
+ *{
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+    }
+
+   
+   nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+   backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+
+
+
+
+
+
+.nav-menu li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #99c84e;
+  transition: width 0.3s ease;
+}
+
+.nav-menu li a:hover::after,
+.nav-menu li a.active::after {
+  width: 80%;
+}
+
+
+
+
+
+
+
+  .logo {
+    font-weight: bold;
+    font-size: 50px;
+     background: -webkit-linear-gradient(#52bc22, #b7ff00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+  .nav-menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+  .nav-menu li a {
+    text-decoration: none;
+     color: rgb(117, 173, 20);
+    font-weight: 600;
+    transition: color 0.3s;
+
+  position: relative;
+  padding-bottom: 5px;
+  text-decoration: none;
+
+  }
+  .nav-menu li a:hover {
+   color: rgb(123, 210, 52);
+    font-weight: bold;
+  }
+  .icons {
+    display: flex;
+    gap: 15px;
+    color:rgb(101, 152, 13);
+    font-size: 20px;
+  }
+  .icons i:hover {
+    color: #7ce852;
+    cursor: pointer;
+  }
+
+  .menu-toggle {
+  display:none;
+  font-size: 28px;
+    color: #75b12b;
+    cursor: pointer;
+  }
+
+  
+  
+  @media (max-width: 768px) {
+    .nav-menu {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to right, rgba(110, 212, 0, 0.686), rgba(255, 255, 255, 0.845));
+      flex-direction: column;
+      display: none;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .nav-menu.active {
+      display: flex;
+    }
+    .nav-menu li {
+      margin: 15px 0;
+    }
+    .icons {
+      display: none;
+    }
+    .menu-toggle {
+      display: block;
+    }
+  }
+
+
+
+    .about-seection{
+max-width: 70%;
+
+margin: auto;
+    }
+
+.about-seection h1 {
+  text-align: center;
+  /* display: inline-block; */
+  position: relative;
+  color: rgb(78, 116, 21);
+  font-size: 36px;
+  margin-bottom:40px;
+  margin-top:150px;
+
+}
+
+.about-seection h1::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: rgb(92, 149, 0);
+}
+
+.about-seection p {
+  color: rgb(101, 202, 7);
+  line-height: 30px;
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 768px) {
+  .about-seection h1 {
+    font-size: 28px;
+  }
+
+  .about-seection p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+
+
+
+footer{
+    position: relative;
+    background: linear-gradient(to right, rgb(35, 77, 1), rgb(61, 119, 61), black);
+    text-align: center;
+    padding: 29px;
+    margin-top: 40px;
+   color: rgb(255, 230, 195);
+   
+}
+
+footer p{
+    margin-top: 10px;
+}
+
+
+.i-place a{
+    position: absolute;
+    top: 45px;
+    right: 40px;
+    box-shadow: 1px 2px 10px rgb(85, 255, 0);
+    background-color: seashell;
+    color: rgb(60, 171, 0);
+    padding: 8px 10px;
+    border-radius: 100%;
+}
+
+.i-place a:hover{
+    transition: 0.3s;
+    opacity: 0.6;
+}
+
+
+  
+.icon {
+      font-size: 20px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+       left: 0;
+      width: 100%;
+       height: 100%;
+      /* background: rgba(248, 248, 248, 0.85); */
+      z-index: 1000;
+      overflow: auto;
+    }
+
+    .modal-content {
+      background:linear-gradient(to right,  rgb(76, 119, 20), rgb(68, 84, 49));
+      margin:5% auto;
+      padding: 50px;
+      width: 80%;
+      max-width: 1000px;
+      border-radius: 10px;
+      display: flex;
+      box-shadow: 1px 2px 10px rgb(92, 123, 0);
+      gap: 30px;
+ 
+      flex-wrap: wrap;
+    }
+
+    .modal-content img {
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 1px 2px 10px rgb(179, 255, 0);
+      border-radius: 30px;
+    }
+
+    .modal-info {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .close {
+      position: absolute;
+      top: 31px;
+    right: 225px;
+      /* background-color: #eee; */
+      /* background: transparent; */
+      /* border-radius: 100%; */
+      /* box-shadow: 1px 2px 10px rgb(91, 108, 35); */
+      color: rgb(97, 145, 0);
+      font-size: 50px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .modal-info h2 {
+      margin-top: 0;
+      color: rgb(130, 169, 32);
+    }
+
+    .project-meta {
+      background: #fbffe8e4;
+      padding: 80px 90px;
+     line-height: 40px;
+      height:500px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      box-shadow: 1px 2px 10px rgb(72, 129, 8);
+      font-size: 15px;
+    }
+
+    .project-meta b {
+      display: inline-block;
+      width: 100px;
+    }
+
+
+
+  /* Portfolio Section */
+  @media (max-width: 768px) {
+  .modal-content {
+    flex-direction: column;
+    padding: 30px 20px;
+    width: 95%;
+  }
+
+  .modal-content img {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .project-meta {
+    padding: 30px 20px;
+    height: auto;
+    font-size: 14px;
+    line-height: 30px;
+  }
+
+  .close {
+    font-size: 40px;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .filter-bar {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .filter-bar button {
+    padding: 10px 20px;
+    margin: 0 8px;
+    border: none;
+    background: linear-gradient(to right, #b7ff00, #52bc22);
+    cursor: pointer;
+   border-top-left-radius: 20px;
+   border-bottom-right-radius: 20px;
+   color: #ffffff;
+   box-shadow: 1px 2px 10px rgb(51, 146, 0);
+    transition: background 0.3s, color 0.3s;
+  }
+  .filter-bar button.active, .filter-bar button:hover {
+background: linear-gradient(to right, #567800, #52bc22);
+    color: rgb(226, 239, 205);
+  }
+
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    justify-content: center;
+   max-width: 80%;
+   margin: auto;
+    gap: 20px;
+    height: 600px;
+  }
+  .card {
+    width: 250px;
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .card.hide {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+    position: absolute;
+  }
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+
+
+
+  .card {
+    position: relative;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .card:hover .overlay {
+    opacity: 1;
+  }
+  .overlay h4 {
+    margin: 0 0 10px 0;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  @media (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .card {
+    width: 100%;
+    height: 200px;
+  }
+
+  .filter-bar button {
+    margin: 5px 4px;
+    padding: 8px 16px;
+  }
+}
+
+
+
+
+
+
+</style>
+
+</head>
+<body>
+
+
+
+
+
+
+
+
+<nav>
+  <div class="logo">Cha Matcha</div>
+
+  <ul class="nav-menu" id="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <div class="icons">
+    <i class="fab fa-twitter"></i>
+    <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-linkedin-in"></i>
+  </div>
+
+  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+</nav>
+
+
+     <div class="about-seection"   data-aos="zoom-in" data-aos-duration="900">
+        <h1>Portfolio</h1>
+        <p>
+          Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
+          aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
+          quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
+          fugiat sit in iste officiis commodi quidem hic quas.
+        </p>
+      </div>
+
+
+
+
+
+<div class="filter-bar" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500" >
+  <button data-filter="all" class="active">All</button>
+  <button data-filter="app">Zen</button>
+  <button data-filter="web">Glow   </button>
+  <button data-filter="cardo">Chill  </button>
+</div>
+
+<div class="cards-container" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500" >
+  <div class="card app"><img src="images/zen.webp" alt="App1">
+  <div class="overlay">
+      <h4>Zen</h4>
+      <p>Matcha Magic
+</p>
+        <div class="icon" onclick="openModal()">+  🔗</div>
+    </div>
+  </div>
+  
+
+
+   <div class="card app"><img src="images/zen2.jpg" alt="App1">
+  <div class="overlay">
+      <h4>Zen</h4>
+      <p>Matcha Magic
+</p>
+        <div class="icon" onclick="openModal()">+  🔗</div>
+    </div>
+  </div>
+  
+
+  <div class="card app"><img src="images/cololo.jpg" alt="App1">
+   <div class="overlay">
+      <h4>Zen</h4>
+      <p>Matcha Magic
+</p>
+        <div class="icon" onclick="openModal()">+  🔗</div>
+    </div>
+  </div>
+
+  <div class="card web"><img src="images/bad.PNG" alt="Web1">
+   <div class="overlay">
+      <h4>Glow   </h4>
+      <p>Matcha Magic
+</p>
+        <div class="icon" onclick="openModal()">+  🔗</div>
+    </div>
+  </div>
+
+
+  <div class="card web"><img src="images/glow1.jpg" alt="Web1">
+   <div class="overlay">
+      <h4>Glow   </h4>
+      <p>Matcha Magic</p>
+        <div class="icon" onclick="openModal()">+  🔗</div>
+    </div>
+  </div>
+
+    <div class="card web"><img src="images/lights-prisms-effect-close-up.jpg" alt="Web1">
+   <div class="overlay">
+      <h4>Glow   </h4>
+      <p>Matcha Magic</p>
+        <div class="icon" onclick="openModal()">+  🔗</div>
+    </div>
+  </div>
+  <div class="card cardo"><img src="images/chill2.jpg" alt="Card1">
+  
+     <div class="overlay">
+      <h4>Chill  </h4>
+      <p>Matcha Magic</p>
+        <div class="icon" onclick="openModal()">+  🔗</div>
+    </div>
+  </div>
+
+
+  <div class="card cardo"><img src="images/cill1.jpg" alt="Card1">
+  
+     <div class="overlay">
+      <h4>Chill  </h4>
+      <p>Matcha Magic</p>
+        <div class="icon" onclick="openModal()">+  🔗</div>
+    </div>
+  </div>
+
+
+   <div class="card cardo"><img src="images/cill3.jpg" alt="Card1">
+  
+     <div class="overlay">
+      <h4>Chill  </h4>
+      <p>Matcha Magic</p>
+        <div class="icon" onclick="openModal()">+  🔗</div>
+    </div>
+  </div>
+
+  <div class="card app"><img src="images/mag.jpg" alt="App2">
+   <div class="overlay">
+      <h4>Zen</h4>
+      <p>Matcha Magic</p>
+        <div class="icon" onclick="openModal()">+  🔗</div>
+    </div>
+  </div>
+  <div class="card web"><img src="images/macha.jpg" alt="Web2">
+   <div class="overlay">
+      <h4>Glow   </h4>
+      <p>Matcha Magic</p>
+        <div class="icon" onclick="openModal()">+  🔗</div>
+    </div>
+  </div>
+  <div class="card cardo"><img src="images/hot-green-tea-glass-with-cream-topped-with-green-tea-decorated-with-green-tea-powder.jpg" alt="Card2">
+   <div class="overlay">
+      <h4>Chill  </h4>
+      <p>Matcha Magic</p>
+        <div class="icon" onclick="openModal()">+  🔗</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div id="projectModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+    <img src="images/mag.jpg" alt="project" />
+    <div class="modal-info">
+      <div class="project-meta" style="color: #67a223;">
+        <p><b>Category:</b> Web design</p>
+        <p><b>Client:</b> ASU Company</p>
+        <p><b>Project date:</b> 01 March, 2020</p>
+        <p><b>Project date:</b> 02 March, 2021</p>
+        <p><b>Project date:</b> 03 March, 2022</p>
+        <p><b>Project date:</b> 04 March, 2023</p>
+
+
+        <p><b>Project URL:</b> <a href="#" style="color: #455b00;">www.example.com</a></p>
+      </div>
+      <h2 style="color: #eee;">This is an example of portfolio detail</h2>
+      <p style="color: #eee;">
+        Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore
+        commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit
+        non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis
+        tempora consectetur dignissimos. Sequi nulla et esse enim cum deserunt eius.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<footer>
+   <h3>© Copyright Cha Matcha. All Rights Reserved</h3>
+   <p>Designed by <span style="color: rgb(50, 198, 5); font-weight: bold;">Css Made</span></p>
+
+   <div class="i-place">
+   <a href="">
+       <i class="fas fa-arrow-up"></i>
+   </a>
+   </div>
+</footer>
+
+
+<script>
+  function openModal() {
+    document.getElementById("projectModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("projectModal").style.display = "none";
+  }
+</script>
+
+
+
+<script>
+  const filterButtons = document.querySelectorAll('.filter-bar button');
+  const cards = document.querySelectorAll('.card');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      cards.forEach(card => {
+        if(filter === 'all' || card.classList.contains(filter)) {
+          card.classList.remove('hide');
+        } else {
+          card.classList.add('hide');
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+
+const navMenu = document.getElementById('nav-menu');
+
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+ <script>
+  AOS.init();
+</script>
+
+</body>
+</html>
